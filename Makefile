@@ -5,7 +5,7 @@ test:
 	poetry run pytest
 
 lint:
-	poetry run flake8 hexlet_code
+	poetry run flake8 gendiff
 
 selfcheck:
 	poetry check
