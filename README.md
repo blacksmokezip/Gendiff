@@ -8,4 +8,5 @@
 
 **Format** | **Description**
 --- | ---
-[**json**](https://asciinema.org/a/mVWOAPhuji2BDr5KaADLDDJbF) | Gendiff example
+[**json**](https://asciinema.org/a/mVWOAPhuji2BDr5KaADLDDJbF) | Gendiff for **.json**
+[**yaml**](https://asciinema.org/a/hIEaaolf6pJTMd5vPIvRFoOhR) | Gendiff for **.yaml** / **.yml**
