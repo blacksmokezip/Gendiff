@@ -28,4 +28,4 @@ def generate_diff(file1, file2):
             diff[f'+ {key}'] = (new_value)
 
     result = dict(sorted(diff.items(), key=lambda x: x[0][2:]))
-    return json.dumps(result)
+    return result
