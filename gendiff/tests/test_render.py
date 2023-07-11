@@ -1,5 +1,5 @@
 from gendiff.gen_diff import gendiff
-from gendiff.render import nested_renderer, json_renderer
+from gendiff.render import nested_renderer, json_renderer, plain_renderer
 from gendiff.open import open_file
 
 
@@ -18,5 +18,12 @@ def test_neted_renderer():
 def test_json_renderer():
     result = json_renderer.render(diff)
     with open('./gendiff/tests/fixtures/json') as f:
+        test_str = f.read()
+    assert result == test_str
+
+
+def test_plain_renderer():
+    result = plain_renderer.render(diff).strip()
+    with open('./gendiff/tests/fixtures/plain') as f:
         test_str = f.read()
     assert result == test_str

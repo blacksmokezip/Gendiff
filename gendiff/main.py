@@ -1,12 +1,13 @@
 import argparse
 from gendiff.gen_diff import generate_diff
-from gendiff.render import json_renderer, nested_renderer
+from gendiff.render import json_renderer, nested_renderer, plain_renderer
 
 
 def main():
     renderer = {
         'json': json_renderer,
-        'nested': nested_renderer
+        'nested': nested_renderer,
+        'plain': plain_renderer
     }
 
     parser = argparse.ArgumentParser(
