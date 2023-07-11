@@ -6,6 +6,10 @@
 
 ---
 
+## Install
+pip install git+https://github.com/blacksmokezip/python-project-50.git
 
-## **Demo**
+---
+
+## Demo
 https://asciinema.org/a/E3B8jrvFtNF4nZQ24ZFrOCbR0
