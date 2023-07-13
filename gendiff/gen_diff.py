@@ -4,8 +4,23 @@ from collections import OrderedDict
 from gendiff.render import nested_renderer
 
 
+def value_change(items):
+    for key in items:
+        if items[key] is True:
+            items[key] = 'true'
+        elif items[key] is False:
+            items[key] = 'false'
+        elif items[key] is None:
+            items[key] = 'null'
+    result = items
+    return result
+
+
 def gendiff(file1, file2):
     diff = {}
+
+    value_change(file1)
+    value_change(file2)
 
     first_keys = set(file1.keys())
     second_keys = set(file2.keys())
