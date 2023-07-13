@@ -1,6 +1,7 @@
 from gendiff.open import open_file
 from gendiff.constants import (ADDED, CHANGED, NESTED, REMOVED, UNCHANGED)
 from collections import OrderedDict
+from gendiff.render import nested_renderer
 
 
 def gendiff(file1, file2):
@@ -37,7 +38,7 @@ def gendiff(file1, file2):
 def generate_diff(
         file1,
         file2,
-        renderer
+        renderer=nested_renderer
 ):
     f1 = open_file(file1)
     f2 = open_file(file2)
