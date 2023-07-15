@@ -2,16 +2,16 @@ from gendiff.constants import CHANGED, UNCHANGED, NESTED, ADDED, REMOVED
 
 
 constants = {
-    ADDED: "was added with value: '{0}'",
+    ADDED: "was added with value: {0}",
     REMOVED: "was removed",
-    CHANGED: "was changed. From '{0}' to '{1}'",
+    CHANGED: "was updated. From {0} to {1}",
     UNCHANGED: ""
 }
 
 
 def render(diff, path=''):
     lines = []
-    temp_str = 'Property "{path}" {line}\n'
+    temp_str = "Property '{path}' {line}\n"
     for key, value in diff.items():
         status = value[0]
         if status == NESTED:
@@ -21,6 +21,12 @@ def render(diff, path=''):
             continue
         else:
             temp = complex_values(value[1:])
+            for i, v in enumerate(temp):
+                if v != 'false'\
+                        and v != 'true'\
+                        and v != 'null'\
+                        and v != '[complex value]':
+                    temp[i] = f"'{v}'"
             line = constants[status].format(*temp)
             lines.append(
                 temp_str.format(
@@ -35,6 +41,6 @@ def complex_values(values):
     new = []
     for v in values:
         if isinstance(v, dict):
-            v = 'complex value'
+            v = '[complex value]'
         new.append(v)
     return new
