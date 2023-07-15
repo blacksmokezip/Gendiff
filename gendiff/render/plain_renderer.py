@@ -26,7 +26,7 @@ def render(diff, path=''):
                         and v != 'true'\
                         and v != 'null'\
                         and v != '[complex value]'\
-                        and v != '0':
+                        and not isinstance(v, int):
                     temp[i] = f"'{v}'"
             line = constants[status].format(*temp)
             lines.append(
