@@ -58,4 +58,6 @@ def generate_diff(
     f1 = open_file(file1)
     f2 = open_file(file2)
     diff = gendiff(f1, f2)
+    if renderer == 'stylish':
+        return nested_renderer.render(diff)
     return renderer.render(diff)
