@@ -1,7 +1,13 @@
 from gendiff.open import open_file
 from gendiff.constants import (ADDED, CHANGED, NESTED, REMOVED, UNCHANGED)
 from collections import OrderedDict
-from gendiff.render import nested_renderer
+from gendiff.render import nested_renderer, plain_renderer
+
+
+render_map = {
+    'stylish': nested_renderer,
+    'plain': plain_renderer
+}
 
 
 def value_change(items):
@@ -53,11 +59,10 @@ def gendiff(file1, file2):
 def generate_diff(
         file1,
         file2,
-        renderer=nested_renderer
+        renderer='stylish'
 ):
     f1 = open_file(file1)
     f2 = open_file(file2)
     diff = gendiff(f1, f2)
-    if renderer == 'stylish':
-        return nested_renderer.render(diff)
+    renderer = render_map[renderer]
     return renderer.render(diff)
