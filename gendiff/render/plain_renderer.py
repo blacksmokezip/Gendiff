@@ -25,7 +25,8 @@ def render(diff, path=''):
                 if v != 'false'\
                         and v != 'true'\
                         and v != 'null'\
-                        and v != '[complex value]':
+                        and v != '[complex value]'\
+                        and v != '0':
                     temp[i] = f"'{v}'"
             line = constants[status].format(*temp)
             lines.append(
