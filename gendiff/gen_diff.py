@@ -1,12 +1,14 @@
 from gendiff.open import open_file
 from gendiff.constants import (ADDED, CHANGED, NESTED, REMOVED, UNCHANGED)
 from collections import OrderedDict
-from gendiff.render import nested_renderer, plain_renderer
+from gendiff.render import nested_renderer, plain_renderer, json_renderer
 
 
 render_map = {
     'stylish': nested_renderer,
-    'plain': plain_renderer
+    'plain': plain_renderer,
+    'json': json_renderer,
+    'nested': nested_renderer
 }
 
 

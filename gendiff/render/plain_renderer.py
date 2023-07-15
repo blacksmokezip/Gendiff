@@ -11,7 +11,7 @@ constants = {
 
 def render(diff, path=''):
     lines = []
-    temp_str = "Property '{path}' {line}\n"
+    temp_str = "Property '{path}' {line}"
     for key, value in diff.items():
         status = value[0]
         if status == NESTED:
@@ -35,7 +35,7 @@ def render(diff, path=''):
                     line=line
                 )
             )
-    return ''.join(lines)
+    return '\n'.join(lines)
 
 
 def complex_values(values):
