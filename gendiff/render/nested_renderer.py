@@ -10,13 +10,22 @@ operator = {
 }
 
 
+def render(diff):
+    result = rendering(diff, indent=2)
+    return '{\n' + result + '}'
+
+
 def value_render(value, indent):
     if isinstance(value, dict):
         tmp = []
-        w_spaces = ''.rjust(indent + 4)
+        w_spaces = ''.rjust(indent + 6)
         for k, v in value.items():
-            ln = f'{w_spaces}{k}: {v}\n'
-            tmp.append(ln)
+            if isinstance(v, dict):
+                ln = f'{w_spaces}{k}: {value_render(v, indent+4)}\n'
+                tmp.append(ln)
+            else:
+                ln = f'{w_spaces}{k}: {v}\n'
+                tmp.append(ln)
         return '{\n' + ''.join(tmp) + '}'.rjust(indent + 3)
     else:
         return value
@@ -54,8 +63,3 @@ def rendering(diff, indent=1):
             )
         lines.append(line)
     return ''.join(lines)
-
-
-def render(diff):
-    result = rendering(diff, indent=2)
-    return '{\n' + result + '}'

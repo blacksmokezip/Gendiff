@@ -25,7 +25,7 @@ def gendiff(file1, file2):
     first_keys = set(file1.keys())
     second_keys = set(file2.keys())
 
-    removed = first_keys.difference(second_keys)
+    removed = first_keys.difference(file2)
     for key in removed:
         diff[key] = (REMOVED, file1[key])
 
