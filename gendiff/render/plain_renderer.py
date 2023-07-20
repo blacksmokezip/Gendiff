@@ -12,7 +12,6 @@ constants = {
 
 def render(diff, path=''):
     diff = value_change(diff)
-
     lines = []
     temp_str = "Property '{path}' {line}"
     for key, value in diff.items():

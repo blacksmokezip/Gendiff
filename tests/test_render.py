@@ -1,5 +1,3 @@
-import pytest
-
 from gendiff.gen_diff import gendiff
 from gendiff.render import nested_renderer, json_renderer, plain_renderer
 from gendiff.open import open_file
