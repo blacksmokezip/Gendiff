@@ -12,38 +12,23 @@ render_map = {
 }
 
 
-def value_change(items):
-    for key in items:
-        if items[key] is True:
-            items[key] = 'true'
-        elif items[key] is False:
-            items[key] = 'false'
-        elif items[key] is None:
-            items[key] = 'null'
-    result = items
-    return result
-
-
-def gendiff(file1, file2):
+def gendiff(before_dict, after_dict):
     diff = {}
 
-    value_change(file1)
-    value_change(file2)
+    first_keys = set(before_dict.keys())
+    second_keys = set(after_dict.keys())
 
-    first_keys = set(file1.keys())
-    second_keys = set(file2.keys())
-
-    removed = first_keys.difference(file2)
+    removed = first_keys.difference(after_dict)
     for key in removed:
-        diff[key] = (REMOVED, file1[key])
+        diff[key] = (REMOVED, before_dict[key])
 
     added = second_keys.difference(first_keys)
     for key in added:
-        diff[key] = (ADDED, file2[key])
+        diff[key] = (ADDED, after_dict[key])
 
     for key in first_keys.intersection(second_keys):
-        old_value = file1[key]
-        new_value = file2[key]
+        old_value = before_dict[key]
+        new_value = after_dict[key]
         nested = isinstance(old_value, dict) and isinstance(new_value, dict)
         if nested:
             diff[key] = (
@@ -63,8 +48,8 @@ def generate_diff(
         file2,
         renderer='stylish'
 ):
-    f1 = open_file(file1)
-    f2 = open_file(file2)
-    diff = gendiff(f1, f2)
+    before_dict = open_file(file1)
+    after_dict = open_file(file2)
+    diff = gendiff(before_dict, after_dict)
     renderer = render_map[renderer]
     return renderer.render(diff)

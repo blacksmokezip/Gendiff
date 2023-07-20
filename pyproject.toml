@@ -11,7 +11,7 @@ python = "^3.10"
 pyyaml = "^6.0"
 
 [tool.poetry.scripts]
-gendiff = "gendiff.main:main"
+gendiff = "gendiff.cli:parse_args"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"

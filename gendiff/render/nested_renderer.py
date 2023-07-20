@@ -1,4 +1,5 @@
 from gendiff.constants import (NESTED, UNCHANGED, REMOVED, ADDED, CHANGED)
+from gendiff.render.value_change import value_change
 
 
 operator = {
@@ -32,6 +33,8 @@ def value_render(value, indent):
 
 
 def rendering(diff, indent=1):
+    diff = value_change(diff)
+
     lines = []
     ws = ''.rjust(indent)
     for key, value in diff.items():
