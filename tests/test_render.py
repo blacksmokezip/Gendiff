@@ -1,10 +1,10 @@
 from gendiff.gen_diff import gendiff
 from gendiff.render import nested_renderer, json_renderer, plain_renderer
-from gendiff.open import open_file
+from gendiff.parser import parse
 
 
-file1 = open_file('./tests/fixtures/file1.json')
-file2 = open_file('./tests/fixtures/file2.json')
+file1 = parse('./tests/fixtures/file1.json')
+file2 = parse('./tests/fixtures/file2.json')
 diff = gendiff(file1, file2)
 
 

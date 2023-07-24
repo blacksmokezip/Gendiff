@@ -1,10 +1,10 @@
 from gendiff.constants import ADDED, CHANGED, UNCHANGED, NESTED, REMOVED
-from gendiff.open import open_file
+from gendiff.parser import parse
 from gendiff.gen_diff import gendiff
 
 
-before_dict = open_file("./tests/fixtures/before.json")
-after_dict = open_file("./tests/fixtures/after.json")
+before_dict = parse("./tests/fixtures/before.json")
+after_dict = parse("./tests/fixtures/after.json")
 
 
 def test_gendiff():
