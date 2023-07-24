@@ -3,6 +3,7 @@ from gendiff.parser import parse
 url = 'https://jsonplaceholder.typicode.com/todos/1'
 path = './tests/fixtures/before.json'
 
+
 def test_open_from_url():
     result = parse(url)
     assert result == {
