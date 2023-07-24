@@ -16,19 +16,19 @@ def test_open_from_url():
 def test_open_file():
     result = parse(path)
     assert result == {
-      "common": {
-        "setting1": "Value 1",
-        "setting2": "200",
-        "setting3": True,
-        "setting6": {
-          "key": "value"
+        "common": {
+            "setting1": "Value 1",
+            "setting2": "200",
+            "setting3": True,
+            "setting6": {
+                "key": "value"
+            }
+        },
+        "group1": {
+            "baz": "bas",
+            "foo": "bar"
+        },
+        "group2": {
+            "abc": "12345"
         }
-      },
-      "group1": {
-        "baz": "bas",
-        "foo": "bar"
-      },
-      "group2": {
-        "abc": "12345"
-      }
     }
