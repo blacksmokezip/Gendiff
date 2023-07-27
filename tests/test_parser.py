@@ -1,21 +1,10 @@
-from gendiff.parser import parse
+from gendiff.parser import parse, read_file, get_format
 
-url = 'https://jsonplaceholder.typicode.com/todos/1'
 path = './tests/fixtures/before.json'
 
 
-def test_open_from_url():
-    result = parse(url)
-    assert result == {
-        "userId": 1,
-        "id": 1,
-        "title": "delectus aut autem",
-        "completed": False
-    }
-
-
 def test_open_file():
-    result = parse(path)
+    result = parse(read_file(path), get_format(path))
     assert result == {
         "common": {
             "setting1": "Value 1",

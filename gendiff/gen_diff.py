@@ -1,4 +1,4 @@
-from gendiff.parser import parse
+from gendiff.parser import parse, read_file, get_format
 from gendiff.constants import (ADDED, CHANGED, NESTED, REMOVED, UNCHANGED)
 from collections import OrderedDict
 from gendiff.render import nested_renderer, plain_renderer, json_renderer
@@ -48,8 +48,8 @@ def generate_diff(
         file2,
         renderer='stylish'
 ):
-    before_dict = parse(file1)
-    after_dict = parse(file2)
+    before_dict = parse(read_file(file1), get_format(file1))
+    after_dict = parse(read_file(file2), get_format(file2))
     diff = gendiff(before_dict, after_dict)
     renderer = render_map[renderer]
     return renderer.render(diff)

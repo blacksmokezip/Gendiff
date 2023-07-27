@@ -1,14 +1,19 @@
 import json
 import yaml
-import urllib.request
+from pathlib import Path
 
 
-def parse(path):
-    if isinstance(path, str) and path.startswith('http'):
-        with urllib.request.urlopen(path) as response:
-            body_json = response.read()
-            return json.loads(body_json)
-    with open(path) as f:
-        if path.endswith('.yaml') or path.endswith('.yml'):
-            return yaml.safe_load(f)
-        return json.load(f)
+def read_file(path):
+    data = open(path, 'r')
+    return data
+
+
+def get_format(path):
+    format = Path(path).suffix
+    return format[1:]
+
+
+def parse(data, format):
+    if format == 'yaml' or format == 'yml':
+        return yaml.safe_load(data)
+    return json.load(data)
